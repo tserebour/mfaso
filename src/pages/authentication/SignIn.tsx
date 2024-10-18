@@ -1,18 +1,4 @@
-import {
-  Box,
-  Button,
-  Checkbox,
-  Container,
-  Divider,
-  FormControlLabel,
-  Grid,
-  Link,
-  Paper,
-  Stack,
-  TextField,
-  Typography,
-} from '@mui/material';
-import { SyntheticEvent, useState } from 'react';
+
 import { useNavigate } from 'react-router-dom';
 import { createClient } from '@supabase/supabase-js';
 import paths, { rootPaths } from 'routes/paths';
@@ -20,6 +6,8 @@ import LogoHeader from 'layouts/main-layout/sidebar/LogoHeader';
 import IconifyIcon from 'components/base/IconifyIcon';
 import PasswordTextField from 'components/common/PasswordTextField';
 import supa from 'providers/supabase';
+import { SyntheticEvent, useState } from 'react';
+import { Box, Button, Checkbox, Container, Divider, FormControlLabel, Grid, Link, Paper, Stack, TextField, Typography } from '@mui/material';
 
 // Initialize Supabase client
 const supabaseUrl = supa.url; // replace with your Supabase project URL

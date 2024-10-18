@@ -20,6 +20,12 @@ import {
 import { Edit, Delete, Upload } from '@mui/icons-material';
 import ReactECharts from 'echarts-for-react';
 import LineChart from 'theme/components/LineChart';
+import Timeline from '@mui/lab/Timeline';
+import TimelineItem from '@mui/lab/TimelineItem';
+import TimelineSeparator from '@mui/lab/TimelineSeparator';
+import TimelineConnector from '@mui/lab/TimelineConnector';
+import TimelineContent from '@mui/lab/TimelineContent';
+import TimelineDot from '@mui/lab/TimelineDot';
 
 const Leaderboard = () => {
   const procurementStageOption = {
@@ -133,7 +139,28 @@ const Leaderboard = () => {
         <Grid item xs={12} md={6}>
           <Paper sx={{ p: 2 }}>
             <Typography variant="h6">Procurement Stage</Typography>
-            <ReactECharts option={procurementStageOption} style={{ height: '100px' }} />
+            <Timeline position="alternate">
+            <TimelineItem>
+                <TimelineSeparator>
+                  <TimelineDot color="primary" />
+                  <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent>start</TimelineContent>
+              </TimelineItem>
+              <TimelineItem>
+                <TimelineSeparator>
+                  <TimelineDot color="secondary" />
+                  <TimelineConnector />
+                </TimelineSeparator>
+                <TimelineContent>In Progress</TimelineContent>
+              </TimelineItem>
+              <TimelineItem>
+                <TimelineSeparator>
+                  <TimelineDot color="success" />
+                </TimelineSeparator>
+                <TimelineContent>Success</TimelineContent>
+              </TimelineItem>
+            </Timeline>
           </Paper>
         </Grid>
 

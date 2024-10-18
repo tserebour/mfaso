@@ -52,7 +52,7 @@ const SignUp = () => {
       setError(error.message);
     } else {
       // On successful sign-up, navigate to the root path
-      navigate(rootPaths.root);
+      navigate(paths.signin);
     }
   };
 

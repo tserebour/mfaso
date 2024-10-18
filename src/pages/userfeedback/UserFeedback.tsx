@@ -82,30 +82,36 @@ const UserFeedback = () => {
 
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>How can I download the audit report?</Typography>
+            <Typography>How do I track infrastructure installation progress?</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>{/* Add content here */}</Typography>
+            <Typography>To track infrastructure installation progress in the MFASO Smart Water & Sanitation system, you can use the platform’s automated reporting tools. These tools provide real-time updates on project timelines, installation status, and any potential delays. You can also view progress reports that visualize the work through charts and graphs, giving you a clear overview of each phase of the infrastructure installation process.
+
+Additionally, the system uses IoT sensors and GPS tracking to monitor the movement and installation of materials, allowing you to track the delivery and setup of products in real time. This ensures transparency and allows you to stay informed on the infrastructure developments in your area.</Typography>
           </AccordionDetails>
         </Accordion>
 
         <Accordion>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>I am a supplier, how do I get hired?</Typography>
+            <Typography>How do I report a problem with water supply in my area?</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <Typography>{/* Add content here */}</Typography>
+            <Typography>Log in to the web application.
+Look for the option labeled "Report an Issue" or "Report Water Supply Problem" in the interface.
+Fill in the required fields, such as your location, the type of issue (e.g., low water pressure, water quality concerns, or service interruptions), and any additional comments or photos if applicable.
+Once the details are entered, submit the report. The system will log your issue and notify the relevant authorities or service providers in your area.</Typography>
           </AccordionDetails>
         </Accordion>
 
         <Accordion defaultExpanded>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography>What is the current Water and Sanitation Project?</Typography>
+            <Typography>How to I export the audit report?</Typography>
           </AccordionSummary>
           <AccordionDetails>
             <Typography>
-              The current project is ... Our team of investing experts make decisions about our portfolio strategies and
-              fund selection with the help of an external committee of economists, PhDs, and industry experts.
+            On the dashboard, locate and select the leaderboard tab
+At the top right corner, there is an option "Export Audit Report" in the page
+Click on that option and your report will be downloaded
             </Typography>
           </AccordionDetails>
         </Accordion>
