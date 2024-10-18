@@ -1,5 +1,5 @@
 export default {
-    anonkey: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inp0d3N5cWhib3JxY2J1dWtia3FwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjkxNzU3OTEsImV4cCI6MjA0NDc1MTc5MX0.YDTFPfg2_KsuMCyR_Xmrvcwmd-VVSSRqf5VJXb7X9KU`,
-    url: `https://ztwsyqhborqcbuukbkqp.supabase.co`,
+    anonkey: `eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4aHpzdXp3bmduYnJmemVhc2t3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MjkwMTc4MTQsImV4cCI6MjA0NDU5MzgxNH0.xQYM47Eepl2Vu2NrziucghA9gkcU3Up87eOHSr-FIWk`,
+    url: `https://txhzsuzwngnbrfzeaskw.supabase.co`,
     
 };
