@@ -126,7 +126,7 @@ const Leaderboard = () => {
 
   const [companies, setCompanies] = useState<Company[]>([
     {
-      name: 'G &',
+      name: 'G & L',
       representative: 'Kicker Nicli',
       contact: '+27 234 5672',
       email: 'Nicli@gmail.com',
