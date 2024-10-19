@@ -17,7 +17,7 @@ import {
   Avatar,
   IconButton,
 } from '@mui/material';
-import { Edit, Delete, Upload } from '@mui/icons-material';
+import { Edit, Delete, Upload, Cancel, Save } from '@mui/icons-material';
 import ReactECharts from 'echarts-for-react';
 import LineChart from 'theme/components/LineChart';
 import Timeline from '@mui/lab/Timeline';
@@ -26,6 +26,20 @@ import TimelineSeparator from '@mui/lab/TimelineSeparator';
 import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineDot from '@mui/lab/TimelineDot';
+import { useState } from 'react';
+// import { supabase } from '../supabaseClient'; 
+
+
+
+
+
+interface Company {
+  name: string;
+  representative: string;
+  contact: string;
+  email: string;
+  bidDocument: string;
+}
 
 const Leaderboard = () => {
   const procurementStageOption = {
@@ -107,6 +121,95 @@ const Leaderboard = () => {
         },
       },
     ],
+  };
+
+
+  const [companies, setCompanies] = useState<Company[]>([
+    {
+      name: 'G &',
+      representative: 'Kicker Nicli',
+      contact: '+27 234 5672',
+      email: 'Nicli@gmail.com',
+      bidDocument: 'Uploaded',
+    },
+    {
+      name: 'Water and Sanitation Agency',
+      representative: 'Kilian James',
+      contact: '+27 234 5672',
+      email: 'Kilian@gmail.com',
+      bidDocument: 'No Upload',
+    },
+  ]);
+
+
+
+  const [isAdding, setIsAdding] = useState(false);
+  const [newCompany, setNewCompany] = useState<Company>({
+    name: '',
+    representative: '',
+    contact: '',
+    email: '',
+    bidDocument: '',
+  });
+
+  const handleAddCompany = () => {
+    setIsAdding(true);
+  };
+
+
+
+  // Function to add a new company to the Supabase database
+// async function addCompanyToDatabase(newCompany: Company) {
+//   const { data, error } = await supabase
+//     .from('companies') // Replace with your actual table name
+//     .insert([
+//       {
+//         company: newCompany.companyName,
+//         representative: newCompany.representative,
+//         contact: newCompany.contact,
+//         email: newCompany.email,
+//       },
+//     ]);
+
+//   if (error) {
+//     console.error('Error adding company:', error);
+//     return { success: false, error };
+//   } else {
+//     console.log('Company added successfully:', data);
+//     return { success: true, data };
+//   }
+// }
+
+  const handleSaveCompany = async () => {
+    setCompanies([...companies, newCompany]);
+
+    // await addCompanyToDatabase(newCompany)
+    setNewCompany({
+      name: '',
+      representative: '',
+      contact: '',
+      email: '',
+      bidDocument: '',
+    });
+
+
+    setIsAdding(false);
+  };
+
+  const handleCancelAdd = () => {
+    setIsAdding(false);
+    setNewCompany({
+      name: '',
+      representative: '',
+      contact: '',
+      email: '',
+      bidDocument: '',
+    });
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setNewCompany({ ...newCompany, [name]: value });
   };
 
   return (
@@ -212,76 +315,120 @@ const Leaderboard = () => {
 
         {/* Contractors */}
         <Grid item xs={12}>
-          <Paper sx={{ p: 2 }}>
-            <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
-              <Typography variant="h6">Contractors</Typography>
-              <Button variant="contained" color="secondary">
-                Add Companies
-              </Button>
-            </Box>
-            <TableContainer>
-              <Table>
-                <TableHead>
-                  <TableRow>
-                    <TableCell>Companies</TableCell>
-                    <TableCell>Representatives</TableCell>
-                    <TableCell>Contact</TableCell>
-                    <TableCell>Email</TableCell>
-                    <TableCell>Action</TableCell>
-                    <TableCell>Bid Document</TableCell>
-                  </TableRow>
-                </TableHead>
-                <TableBody>
-                  <TableRow>
-                    <TableCell>G & L</TableCell>
-                    <TableCell>
-                      <Box display="flex" alignItems="center">
-                        <Avatar src="/placeholder.jpg" sx={{ mr: 1 }} />
-                        Kicker Nicli
-                      </Box>
-                    </TableCell>
-                    <TableCell>+27 234 5672</TableCell>
-                    <TableCell>Nicli@gmail.com</TableCell>
-                    <TableCell>
-                      <IconButton size="small">
-                        <Edit />
-                      </IconButton>
-                      <IconButton size="small">
-                        <Delete />
-                      </IconButton>
-                    </TableCell>
-                    <TableCell>
-                      <Typography color="success.main">Uploaded</Typography>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell>Water and Sanitation Agency</TableCell>
-                    <TableCell>
-                      <Box display="flex" alignItems="center">
-                        <Avatar src="/placeholder.jpg" sx={{ mr: 1 }} />
-                        Kilian James
-                      </Box>
-                    </TableCell>
-                    <TableCell>+27 234 5672</TableCell>
-                    <TableCell>Kilian@gmail.com</TableCell>
-                    <TableCell>
-                      <IconButton size="small">
-                        <Edit />
-                      </IconButton>
-                      <IconButton size="small">
-                        <Delete />
-                      </IconButton>
-                    </TableCell>
-                    <TableCell>
-                      <Button startIcon={<Upload />} color="error">
-                        No Upload
-                      </Button>
-                    </TableCell>
-                  </TableRow>
-                </TableBody>
-              </Table>
-            </TableContainer>
-          </Paper>
+        <Paper sx={{ p: 2 }}>
+      <Box display="flex" justifyContent="space-between" alignItems="center" mb={2}>
+        <Typography variant="h6">Contractors</Typography>
+        <Button variant="contained" color="secondary" onClick={handleAddCompany}>
+          Add Companies
+        </Button>
+      </Box>
+      <TableContainer>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Companies</TableCell>
+              <TableCell>Representatives</TableCell>
+              <TableCell>Contact</TableCell>
+              <TableCell>Email</TableCell>
+              <TableCell>Action</TableCell>
+              <TableCell>Bid Document</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {companies.map((company, index) => (
+              <TableRow key={index}>
+                <TableCell>{company.name}</TableCell>
+                <TableCell>
+                  <Box display="flex" alignItems="center">
+                    <Avatar src="/placeholder.jpg" sx={{ mr: 1 }} />
+                    {company.representative}
+                  </Box>
+                </TableCell>
+                <TableCell>{company.contact}</TableCell>
+                <TableCell>{company.email}</TableCell>
+                <TableCell>
+                  <IconButton size="small">
+                    <Edit />
+                  </IconButton>
+                  <IconButton size="small">
+                    <Delete />
+                  </IconButton>
+                </TableCell>
+                <TableCell>
+                  {company.bidDocument === 'Uploaded' ? (
+                    <Typography color="success.main">Uploaded</Typography>
+                  ) : (
+                    <Button startIcon={<Upload />} color="error">
+                      No Upload
+                    </Button>
+                  )}
+                </TableCell>
+              </TableRow>
+            ))}
+            {isAdding && (
+              <TableRow>
+                <TableCell>
+                  <TextField
+                    name="name"
+                    label="Company Name"
+                    value={newCompany.name}
+                    onChange={handleInputChange}
+                    variant="standard"
+                  />
+                </TableCell>
+                <TableCell>
+                  <Box display="flex" alignItems="center">
+                    <Avatar src="/placeholder.jpg" sx={{ mr: 1 }} />
+                    <TextField
+                      name="representative"
+                      label="Representative"
+                      value={newCompany.representative}
+                      onChange={handleInputChange}
+                      variant="standard"
+                    />
+                  </Box>
+                </TableCell>
+                <TableCell>
+                  <TextField
+                    name="contact"
+                    label="Contact"
+                    value={newCompany.contact}
+                    onChange={handleInputChange}
+                    variant="standard"
+                  />
+                </TableCell>
+                <TableCell>
+                  <TextField
+                    name="email"
+                    label="Email"
+                    value={newCompany.email}
+                    onChange={handleInputChange}
+                    variant="standard"
+                  />
+                </TableCell>
+                <TableCell>
+                  <IconButton size="small" onClick={handleSaveCompany}>
+                    <Save />
+                  </IconButton>
+                  <IconButton size="small" onClick={handleCancelAdd}>
+                    <Cancel />
+                  </IconButton>
+                </TableCell>
+                <TableCell>
+                  <TextField
+                    name="bidDocument"
+                    label="Bid Document"
+                    value={newCompany.bidDocument}
+                    onChange={handleInputChange}
+                    variant="standard"
+                  />
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </Paper>
         </Grid>
       </Grid>
     </Box>
