@@ -14,14 +14,14 @@ export interface MenuItem {
 }
 
 const sitemap: MenuItem[] = [
-  // {
-  //   id: 1,
-  //   name: 'Dashboard',
-  //   path: rootPaths.root,
-  //   pathName: 'dashboard',
-  //   svgIcon: DashboardIcon,
-  //   active: true,
-  // },
+  {
+    id: 1,
+    name: 'Dashboard',
+    path: rootPaths.root,
+    pathName: 'dashboard',
+    svgIcon: DashboardIcon,
+    active: true,
+  },
   {
     id: 9,
     name: 'Authentication',
